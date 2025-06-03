@@ -15,7 +15,7 @@ public partial class Device
 
     public int? DeviceTypeId { get; set; }
 
-    public virtual ICollection<DeviceEmployee> DeviceEmployees { get; set; } = new List<DeviceEmployee>();
+    public ICollection<DeviceEmployee> DeviceEmployees { get; set; } = new List<DeviceEmployee>();
 
-    public virtual DeviceType? DeviceType { get; set; }
+    public DeviceType? DeviceType { get; set; }
 }

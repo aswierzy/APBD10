@@ -10,7 +10,7 @@
   },
   "AllowedHosts": "*",
   "ConnectionStrings": {
-    "DefaultConnection" : "put your connection string here"
+    "MY_DB" : "put your connection string here"
   }
 }
 ```

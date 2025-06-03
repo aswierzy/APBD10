@@ -4,17 +4,17 @@ namespace EntityFramework.DTO;
 
 public class DeviceDTO
 {
-    [Required]
-    [StringLength(150)]
+    [Required(ErrorMessage = "Device name is required.")]
+    [MaxLength(150)]
     public string Name { get; set; } = string.Empty;
 
-    [Required]
-    public bool? IsEnabled { get; set; }
-
-    [Required]
-    [StringLength(100)]
+    [Required(ErrorMessage = "Device type name is required.")]
+    [MaxLength(100)]
     public string DeviceTypeName { get; set; } = string.Empty;
 
-    [Required]
-    public object AdditionalProperties { get; set; }
+    [Required(ErrorMessage = "IsEnabled must be provided.")]
+    public bool IsEnabled { get; set; }
+
+    [Required(ErrorMessage = "AdditionalProperties is required.")]
+    public object AdditionalProperties { get; set; } = null!;
 }
