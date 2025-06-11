@@ -5,11 +5,13 @@ using EntityFramework.DAL;
 using Microsoft.EntityFrameworkCore;
 using EntityFramework.DTO;
 using EntityFramework.Helpers.Options;
+using EntityFramework.Middleware;
+using EntityFramework.Services.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddScoped<ITokenService, TokenService>();
 var jwtConfigData = builder.Configuration.GetSection("Jwt");
 
 var connectionString = builder.Configuration.GetConnectionString("MY_DB")
@@ -47,8 +49,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 
+
+app.UseMiddleware<Middleware>();
+app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
